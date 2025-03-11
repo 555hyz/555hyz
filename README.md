@@ -1,16 +1,35 @@
-## Hi there 👋
+<script>
+    // 创建星空
+    function createStars() {
+        const container = document.body;
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.setProperty('--duration', Math.random() * 3 + 1 + 's');
+            container.appendChild(star);
+        }
+    }
 
-<!--
-**555hyz/555hyz** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+    // 创建流星
+    function createMeteor() {
+        setInterval(() => {
+            const meteor = document.createElement('div');
+            meteor.className = 'meteor';
+            meteor.style.left = Math.random() * 100 + '%';
+            meteor.style.top = Math.random() * 100 + '%';
+            meteor.style.animationDuration = Math.random() * 0.5 + 0.3 + 's';
+            document.body.appendChild(meteor);
+            setTimeout(() => meteor.remove(), 1000);
+        }, 3000);
+    }
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+    // 初始化特效
+    window.onload = () => {
+        createStars();
+        createMeteor();
+    };
+</script>
